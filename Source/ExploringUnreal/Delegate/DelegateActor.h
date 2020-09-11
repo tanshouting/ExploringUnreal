@@ -51,6 +51,10 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		TSet<TSubclassOf<AActor>> testActorSet;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		TSet<AActor*> testActorSet2;
 
 	
 	

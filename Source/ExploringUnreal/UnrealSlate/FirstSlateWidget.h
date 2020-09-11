@@ -18,6 +18,7 @@ public:
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
+	TSharedPtr<class SVerticalBox> verticalBox;
 
 
 };
