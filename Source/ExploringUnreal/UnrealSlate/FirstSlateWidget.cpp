@@ -26,14 +26,27 @@ void UFirstSlateWidget::Construct(const FArguments& InArgs)
 			+ SVerticalBox::Slot()
 		.Padding(1.0).
 		FillHeight(10.0f)
-		.HAlign(HAlign_Fill).VAlign(VAlign_Fill)
+		.HAlign(HAlign_Fill).VAlign(VAlign_Top)
 		[
 			SNew(SButton).Content()
 			[
-				SNew(STextBlock).Font(FSlateFontInfo("Veranda", 100)).Text(NSLOCTEXT("A", "B", "C"))
+				SNew(STextBlock).Font(FSlateFontInfo("Veranda", 100)).Text(NSLOCTEXT("ButtonSpace", "Button","Button"))
 			]
 		]
 		];
+	for (int ButtonNum = 0; ButtonNum < 5; ButtonNum++)
+	{
+		verticalBox->AddSlot().Padding(1.0)
+			.FillHeight(5.0f)
+				[
+					SNew(SButton).Content()
+					[
+						SNew(STextBlock).
+						Font(FSlateFontInfo("Veranda", 100))
+					.Text(FText::Format(NSLOCTEXT("ButtonSpace", "Button","{0}"),ButtonNum)
+					]
+				];
+	}
 		
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
