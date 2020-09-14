@@ -38,15 +38,20 @@ void UFirstSlateWidget::Construct(const FArguments& InArgs)
 	{
 		verticalBox->AddSlot().Padding(1.0)
 			.FillHeight(5.0f)
+			[
+				SNew(SButton).OnClicked(this, &UFirstSlateWidget::ButtonClickEvent).Content()
 				[
-					SNew(SButton).Content()
-					[
-						SNew(STextBlock).
-						Font(FSlateFontInfo("Veranda", 100))
-					.Text(FText::Format(NSLOCTEXT("ButtonSpace", "Button","{0}"),ButtonNum)
-					]
-				];
+					SNew(STextBlock).
+					Font(FSlateFontInfo("Veranda", 100))
+			.Text(FText::Format(NSLOCTEXT("ButtonSpace", "Button", "{0}"), ButtonNum))
+				]
+			];
 	}
 		
+}
+FReply UFirstSlateWidget::ButtonClickEvent()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 100, FColor::Blue, "Button Was Clicked");
+	return FReply::Handled();
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

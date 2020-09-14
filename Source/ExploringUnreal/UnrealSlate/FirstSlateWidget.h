@@ -13,12 +13,15 @@ public:
 public:
 	SLATE_BEGIN_ARGS(UFirstSlateWidget)
 	{}
+
+	SLATE_EVENT(FOnClicked, OnClicked)
 	SLATE_END_ARGS()
 
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
 	TSharedPtr<class SVerticalBox> verticalBox;
+	FReply ButtonClickEvent();
 
 
 };
