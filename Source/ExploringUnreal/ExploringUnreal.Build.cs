@@ -26,6 +26,10 @@ public class ExploringUnreal : ModuleRules
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay" ,"Slate","SlateCore"});
 
+		PublicDependencyModuleNames.AddRange(new string[] { "AssetRegistry" });//TODO
+
+		PrivateDependencyModuleNames.AddRange(new string[] { "UnrealEd" });
+
 		//Delay LinkDLL Code
 		//bEnableUndefinedIdentifierWarnings = false;
 		//PublicIncludePaths.Add(Path.Combine(ThirdPartyPath, "include"));

@@ -3,6 +3,7 @@
 #include "ExploringUnrealGameMode.h"
 #include "ExploringUnrealCharacter.h"
 #include "UObject/ConstructorHelpers.h"
+#include "MeshManager/MeshExchangeManger.h"
 
 AExploringUnrealGameMode::AExploringUnrealGameMode()
 {
@@ -12,4 +13,10 @@ AExploringUnrealGameMode::AExploringUnrealGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+}
+
+void AExploringUnrealGameMode::ExecuFbx(const FString& FbxFilePath, const FString DestinationPath)
+{
+	UMeshExchangeManger* meshManager = NewObject<UMeshExchangeManger>();
+	meshManager->ImportFbxFile(FbxFilePath, DestinationPath);
 }
