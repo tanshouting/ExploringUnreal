@@ -4,6 +4,7 @@
 #include "ExploringUnrealCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 #include "MeshManager/MeshExchangeManger.h"
+#include <Landscape.h>
 
 AExploringUnrealGameMode::AExploringUnrealGameMode()
 {
@@ -19,4 +20,12 @@ void AExploringUnrealGameMode::ExecuFbx(const FString& FbxFilePath, const FStrin
 {
 	UMeshExchangeManger* meshManager = NewObject<UMeshExchangeManger>();
 	meshManager->ImportFbxFile(FbxFilePath, DestinationPath);
+}
+
+void AExploringUnrealGameMode::TestChangeLandspace()
+{
+	
+	//ALandscape* landspace = UWorld->PersistentLevel->
+	
+	//const int32 ComponentsPerHeightmap = FMath::Min(MAX_HEIGHTMAP_TEXTURE_SIZE / ComponentSizeVerts, 1 << (UTexture2D::GetStaticMinTextureResidentMipCount() - 2));
 }

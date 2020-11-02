@@ -15,6 +15,8 @@ public:
 public:
 	UFUNCTION(BlueprintCallable,Category ="生成FBX")
 		void ExecuFbx(const FString& FbxFilePath, const FString DestinationPath);
+	UFUNCTION(BlueprintCallable)
+		void TestChangeLandspace();
 };
 
 
