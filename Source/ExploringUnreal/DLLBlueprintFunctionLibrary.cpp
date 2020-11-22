@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "DLLBlueprintFunctionLibrary.h"
+#include "MultiThread/MyTaskClass.h"
 using namespace std;
 
 
@@ -22,4 +23,34 @@ int UDLLBlueprintFunctionLibrary::importDLL()
 	{
 	}
 	return 0;
+}
+
+void UDLLBlueprintFunctionLibrary::MutliThreadDo(int32 MaxPrime)
+{
+	auto Task = new FAutoDeleteAsyncTask<MyTaskClass>(MaxPrime);//任务完成自动删除模板FAutoDeleteAsyncTask
+	if (Task)
+		Task->StartBackgroundTask();//Call BaseClass DoWork()
+}
+
+void UDLLBlueprintFunctionLibrary::SingleThreadDo(int32 MaxPrime)
+{
+	Do(MaxPrime);
+}
+
+void UDLLBlueprintFunctionLibrary::UDLLBlueprintFunctionLibrary::Do(int32 MaxPrime)
+{
+	for (int32 i = 1; i <= MaxPrime; i++)
+	{
+		bool isPrime = true;
+		for (int32 j = 2; j <= i / 2; j++)
+		{
+			if (FMath::Fmod(i, j) == 0)
+			{
+				isPrime = false;
+				break;
+			}
+		}
+		if (isPrime)
+			GLog->Log("Prime number #" + FString::FromInt(i) + ": " + FString::FromInt(i));
+	}
 }
